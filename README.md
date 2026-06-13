@@ -1,8 +1,8 @@
 # mame — statusLine 豆知識
 
-等 AI 跑指令、而且這一輪超過 2 分鐘時，`mame` 會在 statusLine 上多冒出一則你過去 commit 累積的工程心得（豆知識），外加一行可單獨複製的 `/mame:learn` 指令。平常完全可無視，AI 一跑完豆知識就消失。
+等 AI 跑指令、而且這一輪超過 30 秒時，`mame` 會在 statusLine 上多冒出一則你過去 commit 累積的工程心得（豆知識），外加一行可單獨複製的 `/mame:learn` 指令。平常完全可無視，AI 一跑完豆知識就消失。
 
-示意（忙超過兩分鐘時的三行）：
+示意（忙超過 30 秒時的三行）：
 
 ```
 kevin@mac:~/code/jp-flashcard-2026 [Opus 4.8 (1M context)]
@@ -14,10 +14,10 @@ kevin@mac:~/code/jp-flashcard-2026 [Opus 4.8 (1M context)]
 
 - **擷取** `/mame:commit`：用 Conventional Commits 風格 commit，commit 後視情況把心得寫進知識庫（含去重）。
 - **擷取（手動）** `/mame:add`：不綁 commit，直接把你指定的一則心得塞進知識庫；也可被你自己的其他 skill 內嵌呼叫。
-- **顯示** statusLine 腳本 + 一對 hook：只在這一輪忙超過 120 秒時顯示豆知識。
+- **顯示** statusLine 腳本 + 一對 hook：只在這一輪忙超過 30 秒時顯示豆知識。
 - **回想** `/mame:learn <關鍵字>`：從知識庫撈出當初哪個專案、用了什麼、達成什麼、完整 code。
 
-程式碼（plugin）與資料（知識庫 `~/.claude/lessons/lessons.jsonl`）分離。
+程式碼（plugin）與資料（知識庫 `~/.claude/mame/lessons.jsonl`）分離。
 
 ## 前置需求
 
@@ -59,9 +59,9 @@ statusLine 是全域單一插槽，會覆蓋你原本設定的那個，所以 pl
 | 環境變數 | 預設值 | 說明 |
 | --- | --- | --- |
 | `MAME_STATUSLINE_BASE_CMD` | 空字串 | 既有 statusLine 腳本路徑；設了第一行就改用它 |
-| `MAME_STATUSLINE_THRESHOLD` | `120` | 忙超過幾秒才顯示豆知識 |
+| `MAME_STATUSLINE_THRESHOLD` | `30` | 忙超過幾秒才顯示豆知識 |
 | `MAME_STATUSLINE_ROTATE` | `30` | 每幾秒輪播一則 |
-| `MAME_STATUSLINE_LESSONS` | `$HOME/.claude/lessons/lessons.jsonl` | 心得庫 jsonl 路徑 |
+| `MAME_STATUSLINE_LESSONS` | `$HOME/.claude/mame/lessons.jsonl` | 心得庫 jsonl 路徑 |
 
 例如在 shell profile 裡：
 
@@ -75,12 +75,12 @@ export MAME_STATUSLINE_BASE_CMD="$HOME/.claude/my-statusline.sh"
 
 ```bash
 # A. 用內附範例起步
-mkdir -p ~/.claude/lessons && cp lessons.example.jsonl ~/.claude/lessons/lessons.jsonl
+mkdir -p ~/.claude/mame && cp lessons.example.jsonl ~/.claude/mame/lessons.jsonl
 
 # B. 留空，從第一次 /mame:commit 開始長出來（腳本會自動建立檔案）
 ```
 
-## 自我測試（免等兩分鐘）
+## 自我測試（免等門檻時間）
 
 ```bash
 echo $(( $(date +%s) - 300 )) > /tmp/cc-lesson-busy-test

@@ -7,9 +7,9 @@
 BASE_CMD="${MAME_STATUSLINE_BASE_CMD:-}"
 
 # 以下都可用對應的環境變數覆寫（沒設就用預設值）。
-THRESHOLD="${MAME_STATUSLINE_THRESHOLD:-120}"           # 忙超過幾秒才顯示豆知識
+THRESHOLD="${MAME_STATUSLINE_THRESHOLD:-30}"            # 忙超過幾秒才顯示豆知識
 ROTATE="${MAME_STATUSLINE_ROTATE:-30}"                  # 每幾秒輪播一則
-LESSONS="${MAME_STATUSLINE_LESSONS:-$HOME/.claude/lessons/lessons.jsonl}"
+LESSONS="${MAME_STATUSLINE_LESSONS:-$HOME/.claude/mame/lessons.jsonl}"
 
 # ANSI 色碼（格式字串裡寫死，使用者文字一律走 %s）
 DIM=$'\033[2;37m'

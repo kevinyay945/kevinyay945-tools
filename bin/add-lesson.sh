@@ -16,7 +16,7 @@ insight="$4"
 achieved="$5"
 code_arg="${6:--}"
 
-LESSONS_DIR="$HOME/.claude/lessons"
+LESSONS_DIR="$HOME/.claude/mame"
 LESSONS="$LESSONS_DIR/lessons.jsonl"
 mkdir -p "$LESSONS_DIR"
 touch "$LESSONS"

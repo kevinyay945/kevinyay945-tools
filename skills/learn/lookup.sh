@@ -4,7 +4,7 @@
 
 set -u
 
-LESSONS="$HOME/.claude/lessons/lessons.jsonl"
+LESSONS="$HOME/.claude/mame/lessons.jsonl"
 
 if [ "$#" -lt 1 ] || [ -z "${1:-}" ]; then
   echo "用法：lookup.sh <關鍵字>" >&2
@@ -14,7 +14,7 @@ keyword="$1"
 
 if [ ! -f "$LESSONS" ]; then
   echo "找不到知識庫：$LESSONS"
-  echo "可先執行：mkdir -p ~/.claude/lessons && touch ~/.claude/lessons/lessons.jsonl"
+  echo "可先執行：mkdir -p ~/.claude/mame && touch ~/.claude/mame/lessons.jsonl"
   exit 0
 fi
 
