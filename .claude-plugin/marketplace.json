@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "mame",
-      "source": "./",
+      "source": "./mame",
       "description": "等 AI 跑指令超過 30 秒時，在 statusLine 冒出一則你過去 commit 累積的工程豆知識，外加一行可複製的 /mame:learn 指令。"
     }
   ]
