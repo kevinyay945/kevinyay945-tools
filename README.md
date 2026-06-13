@@ -39,11 +39,13 @@ statusLine 是全域單一插槽，會覆蓋你原本設定的那個，所以 pl
 {
   "statusLine": {
     "type": "command",
-    "command": "${CLAUDE_PLUGIN_ROOT}/bin/statusline.sh",
+    "command": "$HOME/.claude/plugins/marketplaces/kevinyay945-tools/bin/statusline.sh",
     "refreshInterval": 5
   }
 }
 ```
+
+> 這裡**不能**用 `${CLAUDE_PLUGIN_ROOT}`。該變數只在 Claude Code 執行 plugin 自己的元件（`hooks.json`、commands）時才會被設定；`statusLine` 寫在 `~/.claude/settings.json`，沒有 plugin context，變數會展開成空字串導致路徑錯誤。`statusLine.command` 是在 shell 下執行，所以改用 `$HOME` 這類一般環境變數即可正常展開，又不必寫死 `/Users/你的帳號`。
 
 > `refreshInterval: 5` 讓 statusLine 約每 5 秒重整一次，這樣忙超過門檻時豆知識才會自己冒出來、輪播。
 
