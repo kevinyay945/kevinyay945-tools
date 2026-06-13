@@ -13,6 +13,7 @@ kevin@mac:~/code/jp-flashcard-2026 [Opus 4.8 (1M context)]
 三個組件，透過同一份 JSONL 知識庫串起來：
 
 - **擷取** `/mame:commit`：用 Conventional Commits 風格 commit，commit 後視情況把心得寫進知識庫（含去重）。
+- **擷取（手動）** `/mame:add`：不綁 commit，直接把你指定的一則心得塞進知識庫；也可被你自己的其他 skill 內嵌呼叫。
 - **顯示** statusLine 腳本 + 一對 hook：只在這一輪忙超過 120 秒時顯示豆知識。
 - **回想** `/mame:learn <關鍵字>`：從知識庫撈出當初哪個專案、用了什麼、達成什麼、完整 code。
 
@@ -93,6 +94,7 @@ rm /tmp/cc-lesson-busy-test
 ## 用法
 
 - 日常：無視它。AI 跑很久時瞄一眼豆知識。
+- 想手動記一則：`/mame:add`，把想記的內容（至少給 key 與一句洞見）丟給它即可；也可在你自己的 skill 裡寫「呼叫 mame:add 存起來」來內嵌使用。
 - 好奇某則：把豆知識下面那行 `/mame:learn xxx` 複製貼回輸入框。
 - 想 alias 查表：`alias lesson='bash <plugin>/skills/learn/lookup.sh'`，之後 `lesson useSelector`。
 
