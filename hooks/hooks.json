@@ -1,0 +1,11 @@
+{
+  "UserPromptSubmit": [
+    { "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/bin/lesson-busy-start.sh" } ] }
+  ],
+  "Stop": [
+    { "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/bin/lesson-busy-clear.sh" } ] }
+  ],
+  "StopFailure": [
+    { "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/bin/lesson-busy-clear.sh" } ] }
+  ]
+}

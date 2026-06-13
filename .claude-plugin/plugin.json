@@ -1,0 +1,9 @@
+{
+  "name": "mame",
+  "version": "1.0.0",
+  "description": "等 AI 跑指令超過 2 分鐘時，在 statusLine 冒出一則你過去 commit 累積的工程豆知識，外加一行可複製的 /mame:learn 指令。",
+  "author": {
+    "name": "kevinyay945"
+  },
+  "repository": "https://github.com/kevinyay945/kevinyay945-tools"
+}

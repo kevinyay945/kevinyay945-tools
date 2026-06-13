@@ -1,0 +1,13 @@
+{
+  "name": "kevinyay945-tools",
+  "owner": {
+    "name": "kevinyay945"
+  },
+  "plugins": [
+    {
+      "name": "mame",
+      "source": "./",
+      "description": "等 AI 跑指令超過 2 分鐘時，在 statusLine 冒出一則你過去 commit 累積的工程豆知識，外加一行可複製的 /mame:learn 指令。"
+    }
+  ]
+}
