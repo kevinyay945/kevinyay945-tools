@@ -3,11 +3,13 @@
 # 刻意不用 set -e：statusLine 腳本一旦 exit 非零或無輸出整條就會變空白。
 
 # 進階使用者選用：指向某支既有 statusLine 腳本。預設空字串 → 走自組 base 行。
-BASE_CMD=""
+# 也可用環境變數 MAME_STATUSLINE_BASE_CMD 覆寫（環境變數優先）。
+BASE_CMD="${MAME_STATUSLINE_BASE_CMD:-}"
 
-THRESHOLD=120            # 忙超過幾秒才顯示豆知識
-ROTATE=30               # 每幾秒輪播一則
-LESSONS="$HOME/.claude/lessons/lessons.jsonl"
+# 以下都可用對應的環境變數覆寫（沒設就用預設值）。
+THRESHOLD="${MAME_STATUSLINE_THRESHOLD:-120}"           # 忙超過幾秒才顯示豆知識
+ROTATE="${MAME_STATUSLINE_ROTATE:-30}"                  # 每幾秒輪播一則
+LESSONS="${MAME_STATUSLINE_LESSONS:-$HOME/.claude/lessons/lessons.jsonl}"
 
 # ANSI 色碼（格式字串裡寫死，使用者文字一律走 %s）
 DIM=$'\033[2;37m'

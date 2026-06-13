@@ -51,6 +51,21 @@ statusLine 是全域單一插槽，會覆蓋你原本設定的那個，所以 pl
 
 **進階選用**：如果你已經有自己的 statusLine 腳本想保留，可編輯 `bin/statusline.sh` 把 `BASE_CMD` 設成那支腳本的路徑，第一行就會改用它。預設留空即可。
 
+也可以不改腳本，改用環境變數覆寫（環境變數優先，沒設就用腳本內的預設值）：
+
+| 環境變數 | 預設值 | 說明 |
+| --- | --- | --- |
+| `MAME_STATUSLINE_BASE_CMD` | 空字串 | 既有 statusLine 腳本路徑；設了第一行就改用它 |
+| `MAME_STATUSLINE_THRESHOLD` | `120` | 忙超過幾秒才顯示豆知識 |
+| `MAME_STATUSLINE_ROTATE` | `30` | 每幾秒輪播一則 |
+| `MAME_STATUSLINE_LESSONS` | `$HOME/.claude/lessons/lessons.jsonl` | 心得庫 jsonl 路徑 |
+
+例如在 shell profile 裡：
+
+```bash
+export MAME_STATUSLINE_BASE_CMD="$HOME/.claude/my-statusline.sh"
+```
+
 ## 初始化知識庫
 
 二選一：
